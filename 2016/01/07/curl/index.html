@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="随笔," />
+  <meta name="keywords" content="Linux,技术," />
 
 
 
@@ -51,19 +51,19 @@
 
 
 
-<meta name="description" content="转眼已经是2015年的年底了，今年似乎没有往年年末那种浮躁、跳动了。该干的活还在继续，公司也没有什么气氛（也许有，只是被意识雷达屏蔽了）。然而，2015确是真正值得回味的一年，这其中发生了很多事，我有了一些改变、获得了一丝成长，难能可贵。以时间为轴，总结一下。
-家15年3月份，我们开始了装修。从3-15开始参加在蓝景丽家的小区集采开始，我们前前后后跑了多个装修建材市场，往返于知春路与平西府地铁站无">
+<meta name="description" content="curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：
+curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G  &amp;quot;http://dict.youdao.com/search&amp;quot;  | grep -A 5 &amp;#39;class=&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="goodbye 2015">
-<meta property="og:url" content="http://yoursite.com/2015/12/29/goodbye-2015/index.html">
+<meta property="og:title" content="curl">
+<meta property="og:url" content="http://yoursite.com/2016/01/07/curl/index.html">
 <meta property="og:site_name" content="佳杰誓">
-<meta property="og:description" content="转眼已经是2015年的年底了，今年似乎没有往年年末那种浮躁、跳动了。该干的活还在继续，公司也没有什么气氛（也许有，只是被意识雷达屏蔽了）。然而，2015确是真正值得回味的一年，这其中发生了很多事，我有了一些改变、获得了一丝成长，难能可贵。以时间为轴，总结一下。
-家15年3月份，我们开始了装修。从3-15开始参加在蓝景丽家的小区集采开始，我们前前后后跑了多个装修建材市场，往返于知春路与平西府地铁站无">
-<meta property="og:updated_time" content="2015-12-30T00:32:00.166Z">
+<meta property="og:description" content="curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：
+curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G  &amp;quot;http://dict.youdao.com/search&amp;quot;  | grep -A 5 &amp;#39;class=&amp;q">
+<meta property="og:updated_time" content="2016-01-07T06:16:57.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="goodbye 2015">
-<meta name="twitter:description" content="转眼已经是2015年的年底了，今年似乎没有往年年末那种浮躁、跳动了。该干的活还在继续，公司也没有什么气氛（也许有，只是被意识雷达屏蔽了）。然而，2015确是真正值得回味的一年，这其中发生了很多事，我有了一些改变、获得了一丝成长，难能可贵。以时间为轴，总结一下。
-家15年3月份，我们开始了装修。从3-15开始参加在蓝景丽家的小区集采开始，我们前前后后跑了多个装修建材市场，往返于知春路与平西府地铁站无">
+<meta name="twitter:title" content="curl">
+<meta name="twitter:description" content="curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：
+curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G  &amp;quot;http://dict.youdao.com/search&amp;quot;  | grep -A 5 &amp;#39;class=&amp;q">
 
 
 
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title> goodbye 2015 | 佳杰誓 </title>
+  <title> curl | 佳杰誓 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -195,7 +195,7 @@
             
             
               
-                goodbye 2015
+                curl
               
             
           </h1>
@@ -204,8 +204,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-29T22:30:18+08:00" content="2015-12-29">
-              2015-12-29
+            <time itemprop="dateCreated" datetime="2016-01-07T11:09:12+08:00" content="2016-01-07">
+              2016-01-07
             </time>
           </span>
 
@@ -215,8 +215,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/29/goodbye-2015/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/29/goodbye-2015/" itemprop="commentsCount"></span>
+                <a href="/2016/01/07/curl/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/07/curl/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -235,19 +235,33 @@
       
 
       
-        <span itemprop="articleBody"><p>转眼已经是2015年的年底了，今年似乎没有往年年末那种浮躁、跳动了。该干的活还在继续，公司也没有什么气氛（也许有，只是被意识雷达屏蔽了）。<br>然而，2015确是真正值得回味的一年，这其中发生了很多事，我有了一些改变、获得了一丝成长，难能可贵。以时间为轴，总结一下。</p>
-<h3 id="u5BB6"><a href="#u5BB6" class="headerlink" title="家"></a>家</h3><p>15年3月份，我们开始了装修。从3-15开始参加在蓝景丽家的小区集采开始，我们前前后后跑了多个装修建材市场，往返于知春路与平西府地铁站无数次，中间也经历了退货，与黑心商家斗争，甚至被商家殴打进了派出所（不堪回首）。筑巢不易，倍加珍惜。<br>但总的来说，我觉得装修也让我成长了不少。很多事情都需要自已动手去做，各项材料都需要统筹安排，却也没觉得装修有多么的累，夫妻间也没出现大的争执。<br>老婆总说还是在自己家里好，确实，这里虽然有这样那样的问题，但却是我们一砖一瓦搭的窝，温暖。</p>
-<h3 id="u4F73"><a href="#u4F73" class="headerlink" title="佳"></a>佳</h3><ul>
-<li>2015年4月，拍婚纱照</li>
-<li>2015年6月12日，登记领证</li>
-<li>2015年7月27日（阴历六月十二），举行【主题：杰为佳偶】婚礼</li>
-<li>2015年8月，云南十日蜜月之旅</li>
-</ul>
-<p>是的，2015年是我们两个人的甜蜜之年。这些年一路走来，我们虽然依旧有争吵，但是彼此珍惜爱护。我依稀记得领证结婚的那天，天空美的像一幅画，而我们一定是画中最亮的那抹色彩。<br>蜜月之行是更为珍贵的一段回忆，我们自行规划路线、预订酒店。虽然也有些小的遗憾，但是我们还是走过了丽江息壤的街道、看过泸沽湖静谧的湖水、骑过大理呆萌的小龟车、感受过香格里拉的深邃与辽阔。</p>
-<h3 id="u65B0_u516C_u53F8"><a href="#u65B0_u516C_u53F8" class="headerlink" title="新公司"></a>新公司</h3><p>就在婚假结束之后，我跳槽了，离开了工作1年多的百度。对于百度我是有感情的，这里是我转型互联网以来的第一家公司，在这里我得到了成长，从最初的战战兢兢，到后来的组里核心，再到年底的绩效一档，我得到了同事的认可，也获得了一份自信。但是，我是渴望成长（涨工资）和挑战（涨工资）的，于是选择了换一个环境，争取能做更真实的线上项目、写更多的代码、积累更多的经验。<br>到今天来阿(神)里(马)已经差不多4个月了，这里也有这样那样令人失望的事情，但是确实学到了不少东西，尤其有很nice的同事能够给我不少帮助。未来的一年可能不会再跳，力争能够学到更多东西，积累资源，做到独当一面。</p>
-<h3 id="u533B_u9662"><a href="#u533B_u9662" class="headerlink" title="医院"></a>医院</h3><p>这段是不太愿意回忆的主题。抗战阅兵假期里，在杭州的我们接到了家里的电话：老妈病倒了。从杭州赶回来，到医院看到老妈的第一幕就是她躺在担架上面，面容憔悴。可能到那时，我才明白了他们已经是老人了，虽然早已升级为爷爷奶奶，但是在我心中他们还是能够为我遮风挡雨的人，而那时我明白了未来应该是我来给他们遮挡风雨了。<br>过程虽然艰难，但是结局是好的，经过了手术，老妈痊愈了。整个过程中，我尽自己所能来搞定能做到的一切，比如给医生塞红包、参与决策手术方案、值夜班等等。这些事情虽不情愿，但也能让我赶紧成长。未来，我们双方的父母都快60岁了，他们的健康问题是应该被重视的。</p>
-<h3 id="u5E74_u672B"><a href="#u5E74_u672B" class="headerlink" title="年末"></a>年末</h3><p>这一年经历了很多事情，一些当时觉得忐忑、艰难、紧张的时刻，现在想来也是平常。不过，这一年下来，我觉得自己似乎有所成长，变得能有担当，能让老婆依靠，能撑起这个家。<br>再见2015，拥抱2016。</p>
-<p>今年冬天是个暖冬，暖到似乎让人忘记了一年即将过去。</p>
+        <span itemprop="articleBody"><p>curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：</p>
+<p><code>curl -s -d &quot;q=$KW&amp;le=eng&amp;keyfrom=dict.top&quot; -G  &quot;http://dict.youdao.com/search&quot;  | grep -A 5 &#39;class=&quot;trans-container&quot;&#39;   | grep &#39;&lt;li&gt;&#39; | sed -e &#39;s:[&lt;li&gt;&lt;/li&gt;]::g&#39;</code><br>通过-G -d 的形式提交一个get请求到有道字典，然后截取翻译信息。</p>
+<ol>
+<li><p>基本用法<br> <code>curl &quot;http://m.sm.cn&quot;</code><br> 加上引号是好习惯，避免当url中有<strong>&amp;</strong>或其他特殊字符。该命令会将页面显示在”标准输出”（stdout）中。</p>
+</li>
+<li><p>显示头信息<br> <code>curl -i &quot;http://m.sm.cn&quot;  (include header)</code><br> 会将response header 放在页面前面输出。</p>
+<p> <code>curl -I &quot;http://m.sm.cn&quot;</code><br> 只输出header。</p>
+<p> <code>curl -D tmp/h.txt &quot;http://sm.cn&quot;</code><br> 保存header到文件。</p>
+</li>
+<li><p>处理重定向<br> <code>curl &quot;http://sm.cn&quot;</code><br> 会返回重定向信息，并不会真正输出跳转后的页面，需要这么做<br> <code>curl -L &quot;http://sm.cn&quot;  (location)</code></p>
+</li>
+<li><p>Referer<br> <code>curl -e &quot;https://www.google.com/&quot;  http://m.sm.cn</code></p>
+</li>
+<li><p>User-Agent<br> <code>curl -A &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17&quot;  http://m.sm.cn</code><br> 默认CURL的User-agent为：<br> <code>curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8r zlib/1.2.5</code></p>
+</li>
+<li><p>POST/GET<br> <code>curl   -d &quot;name=mrwangrj&amp;age=28&quot; http://localhost/learing-curl/post-get.php (data)</code><br> 参数指定表单以POST的形式执行。<br>  <code>curl   -d -G &quot;name=mrwangrj&amp;age=28&quot; http://localhost/learing-curl/post-get.php (data, Get)</code><br>  <strong>-G</strong> 强制以指定表单以GET方法提交。</p>
+</li>
+<li><p>Cookie<br> <code>curl -c tmp/cookie.txt &quot;http://www.alibaba.com&quot;</code><br> 将会用标准格式保存cookie到文件中。</p>
+<p> <code>curl -b &quot;name=data&quot; &quot;http://m.sm.cn&quot;</code><br> <code>curl -b &quot;tmp/cookie.txt&quot; &quot;http://m.sm.cn&quot;</code><br> 两种方式带cookie访问。</p>
+</li>
+<li><p>Request Header<br> <code>curl -H &quot;Content-Type:application/json&quot; http:openapi.sm.cn/api (header)</code><br> 增加请求头信息。</p>
+</li>
+<li><p>上传文件<br> <code>curl -F upload_file=@tmp/file.txt http://localhost/learing-curl/upload.php</code><br> 上传文件，注意特殊符号<strong>@</strong></p>
+<p> <code>curl -F &quot;file=@localfile;filename=nameinpost&quot; url.com</code><br> 上传文件并制定filename</p>
+</li>
+</ol>
+<p>ok，以上是curl的几个主要用法。主要参考以下两篇博客：<br><a href="http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="external">阮一峰的blog</a><br><a href="http://www.xuebuyuan.com/799185.html" target="_blank" rel="external">学步园教程</a></p>
 </span>
       
     </div>
@@ -256,7 +270,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag">#随笔</a>
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+            <a href="/tags/技术/" rel="tag">#技术</a>
           
         </div>
       
@@ -265,13 +281,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/01/05/readbook-2015/" rel="next" title="readbook 2015">
+                <i class="fa fa-chevron-left"></i> readbook 2015
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/04/vision-2016/" rel="prev" title="新年愿景">
-                新年愿景 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -298,8 +314,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/29/goodbye-2015/"
-           data-title="goodbye 2015" data-url="http://yoursite.com/2015/12/29/goodbye-2015/">
+      <div class="ds-thread" data-thread-key="2016/01/07/curl/"
+           data-title="curl" data-url="http://yoursite.com/2016/01/07/curl/">
       </div>
     
   </div>
@@ -389,7 +405,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5BB6"><span class="nav-number">1.</span> <span class="nav-text">家</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F73"><span class="nav-number">2.</span> <span class="nav-text">佳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B0_u516C_u53F8"><span class="nav-number">3.</span> <span class="nav-text">新公司</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u533B_u9662"><span class="nav-number">4.</span> <span class="nav-text">医院</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5E74_u672B"><span class="nav-number">5.</span> <span class="nav-text">年末</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
