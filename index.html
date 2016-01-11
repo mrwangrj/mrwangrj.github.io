@@ -177,15 +177,189 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/08/sed/" itemprop="url">
+                  sed
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-08T11:00:00+08:00" content="2016-01-08">
+              2016-01-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/08/sed/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/08/sed/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
-    
+        
+          <span itemprop="articleBody">
+            
+              <p>sed - stream editor for filtering and transforming text </p>
+<p><code>sed [选项]  [定址commands] [inputfile]</code></p>
+<h3 id="u9009_u9879_3A"><a href="#u9009_u9879_3A" class="headerlink" title="选项:"></a>选项:</h3><pre><code>-n: 使用安静(silent)模式。在1般 sed 的用法中，所有来自 STDIN的资料1般都会被列出到STDOUT上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那1行(或者动作)才会被列出来。
+-e: 直接在指令列模式上进行 sed 的动作编辑；
+-f: 直接将 sed 的动作写在1个档案内， -f filename 则可以执行 filename 内的sed 动作；
+-r: sed 的动作支援的是扩展型正规表示法的语法。(预设是基础正规表示法语法)
+-i: 直接修改读取的档案内容，而不是由STDOUT输出。
+</code></pre><h3 id="u547D_u4EE4_3A"><a href="#u547D_u4EE4_3A" class="headerlink" title="命令:"></a>命令:</h3><pre><code>a append 追加
+i insert 插入
+c replace  the  selected  lines with text 替换匹配行
+d delete 删除匹配行
+p print 打印匹配行
+s replace 替换，通常可以搭配正规表示法（正则还是要加强啊），例如 1,20s/old/new/g 
+! 取反操作
+</code></pre><p>回顾下上一篇出现的例子<br><code>curl -s -d &quot;q=cheer&amp;le=eng&amp;keyfrom=dict.top&quot; -G &quot;http://dict.youdao.com/search&quot; | grep -A 5 &#39;class=&quot;trans-container&quot;&#39; | grep &#39;&lt;li&gt;&#39; | sed -e &#39;s/&lt;[^&gt;]*&gt;//g&#39;</code><br>最后一步执行前的输出应该是</p>
+<pre><code>&lt;li&gt;vt. 欢呼；使高兴；为…加油&lt;/li&gt;
+&lt;li&gt;n. 欢呼；愉快；心情；令人愉快的事&lt;/li&gt;
+&lt;li&gt;vi. 欢呼；感到高兴&lt;/li&gt;
+</code></pre><p>最后一步的sed命令负责将标签去掉（替换成空）。<br><code>sed -e &#39;s/&lt;[^&gt;]*&gt;//g</code></p>
+<h3 id="u5220_u9664"><a href="#u5220_u9664" class="headerlink" title="删除"></a>删除</h3><pre><code>sed &apos;1d&apos; file              #删除第1行 
+sed &apos;$d&apos; file              #删除最后1行
+sed &apos;1,2d&apos; file           #删除第1行到第2行
+sed &apos;2,$d&apos; file           #删除第2行到最后1行
+
+sed &apos;/keyword/d&apos; file              #删除含有keyword的行（模式匹配）
+sed &apos;/keyword/!d&apos; file              #删除不含有keyword的行（模式匹配）
+sed &apos;2,/keyword/d&apos; file            #删除从第2行，到含有keyword那行 （两部分组成）
+sed &apos;/keyword/d,10&apos; file           #删除从含有keyword那行，到第10行 （两部分组成）
+
+sed &apos;/t.*t/d&apos; file                       #删除包含2个t的行（正则匹配）
+</code></pre><h3 id="u6253_u5370"><a href="#u6253_u5370" class="headerlink" title="打印"></a>打印</h3><pre><code>sed -n &apos;1p&apos; file           #打印第1行 
+sed -n &apos;$p&apos; file           #打印最后1行
+sed -n &apos;1,2p&apos; file        #打印第1行到第2行
+sed -n &apos;2,$p&apos; file        #打印第2行到最后1行
+
+sed -n &apos;/keyword/p&apos; file  #打印keyword所在行（模式匹配）
+sed -n &apos;/keyword/!p&apos; file  #打印不含有keyword所在行（模式匹配）
+</code></pre><h3 id="u884C_u66FF_u6362"><a href="#u884C_u66FF_u6362" class="headerlink" title="行替换"></a>行替换</h3><pre><code>sed &apos;1c hello sed&apos; file                        #将第1行进行替换
+sed &apos;1,3c hello sed&apos; file                     #将第1,2,3行进行替换，注意是替换成为一行&quot;hello sed&quot;，而不是三行
+sed &quot;/keyword/c hello sed&quot; file          #替换含有keyword的行的内容为“hello sed”
+</code></pre><h3 id="u63D2_u5165_26amp_3B_u8FFD_u52A0"><a href="#u63D2_u5165_26amp_3B_u8FFD_u52A0" class="headerlink" title="插入&amp;追加"></a>插入&amp;追加</h3><pre><code>sed &apos;$i hello sed&apos; file      #在最后1行前面插入1行文本
+sed &apos;1i hello sed&apos; file      #在第1行前面插入1行文本
+sed &apos;1,3i hello sed&apos; file   #在1,2,3行每行前面插入1行文本
+
+sed &apos;$a hello sed&apos; file      #在最后1行后面追加1行文本
+sed &apos;1a hello sed&apos; file      #在第1行后面追加1行文本
+sed &apos;1,3a hello sed&apos; file   #在1,2,3行每行后面追加1行文本
+</code></pre><h3 id="u5B57_u7B26_u66FF_u6362"><a href="#u5B57_u7B26_u66FF_u6362" class="headerlink" title="字符替换"></a>字符替换</h3><pre><code>- 全局替换
+    sed &apos;s/keyword/new/g&apos; file            #替换
+    sed &apos;s/keyword//g file                         #替换成空，相当于删除掉了
+    sed &apos;s/^/#/g file                                  #在每行开始增加内容（#）
+    sed &apos;s/$/!/g file                                  #在每行末尾增加内容（!）
+    sed &apos;s/\&lt;/-/g file                                 #在每行末尾增加内容（-）
+    sed &apos;s/\&gt;/~/g file                                #在每行末尾增加内容（~）
+- 指定行替换
+    sed &apos;3s/keyword/new/g&apos; file        #仅在第3行进行替换
+    sed &apos;3,5s/keyword/new/g&apos; file     #在第3-6行进行替换
+- 指定列替换
+    sed &apos;s/keyword/new/1&apos; file           #替换每行第1个keyword
+    或 sed &apos;s/keyword/new/&apos; file
+    sed &apos;s/keyword/new/2&apos; file         #替换每行第2个keyword
+    sed &apos;s/keyword/new/2g&apos; file       #替换每行第2个以后的keyword
+
+    sed &apos;s/^.//1&apos; file                         #删掉每行的第1个字符
+    sed &apos;s/.//2&apos; file                           #删掉每行的第2个字符
+
+- 以上两种情况混用
+    sed &apos;3s/keyword/new/2&apos; file         #替换第3行第2个keyword
+</code></pre><h3 id="u591A_u4E2A_u5339_u914D"><a href="#u591A_u4E2A_u5339_u914D" class="headerlink" title="多个匹配"></a>多个匹配</h3><pre><code>sed &apos;1,3s/my/your/g; 3,$s/This/That/g&apos; file
+或者可以这样
+sed -e &apos;1,3s/my/your/g&apos; -e &apos;3,$s/This/That/g&apos; file
+</code></pre><h3 id="u5339_u914D_u5F15_u7528_u7B26_26amp_3B"><a href="#u5339_u914D_u5F15_u7528_u7B26_26amp_3B" class="headerlink" title="匹配引用符&amp;"></a>匹配引用符&amp;</h3><pre><code>sed &apos;s/keyword/[&amp;]/g&apos; file #在keyword两边加上[]
+</code></pre><h3 id="u547D_u4EE4N"><a href="#u547D_u4EE4N" class="headerlink" title="命令N"></a>命令N</h3><pre><code>Read/append the next line of input into the pattern space.
+sed &apos;N;s/\n/,/g&apos; file                                       #将相邻两行进行合并后，再进行替换（把换行符替换成了,）
+
+1 keyword a
+2 keyword b
+3 keyword c
+4 keyword d
+
+-&gt;
+1 keyword a,2 keyword b 
+3 keyword c,4 keyword d
+
+sed &apos;2N;s/keyword/new/&apos; file                         #将第2行与相邻行进行合并后，再进行替换，仅替换合并后每行的第一个，替换后，再把合并的行拆开
+
+1 keyword a
+2 keyword b
+3 keyword c
+4 keyword d
+
+-&gt;
+1 new a
+2 new b
+3 keyword c
+4 new d
+</code></pre>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -255,7 +429,7 @@
           <span itemprop="articleBody">
             
               <p>curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：</p>
-<p><code>curl -s -d &quot;q=$KW&amp;le=eng&amp;keyfrom=dict.top&quot; -G  &quot;http://dict.youdao.com/search&quot;  | grep -A 5 &#39;class=&quot;trans-container&quot;&#39;   | grep &#39;&lt;li&gt;&#39; | sed -e &#39;s:[&lt;li&gt;&lt;/li&gt;]::g&#39;</code><br>通过-G -d 的形式提交一个get请求到有道字典，然后截取翻译信息。</p>
+<p><code>curl -s -d &quot;q=cheer&amp;le=eng&amp;keyfrom=dict.top&quot; -G &quot;http://dict.youdao.com/search&quot; | grep -A 5 &#39;class=&quot;trans-container&quot;&#39; | grep &#39;&lt;li&gt;&#39; | sed -e &#39;s/&lt;[^&gt;]*&gt;//g&#39;</code><br>通过-G -d 的形式提交一个get请求到有道字典，然后截取翻译信息。</p>
 <ol>
 <li><p>基本用法<br> <code>curl &quot;http://m.sm.cn&quot;</code><br> 加上引号是好习惯，避免当url中有<strong>&amp;</strong>或其他特殊字符。该命令会将页面显示在”标准输出”（stdout）中。</p>
 </li>
@@ -278,6 +452,8 @@
 </li>
 <li><p>上传文件<br> <code>curl -F upload_file=@tmp/file.txt http://localhost/learing-curl/upload.php</code><br> 上传文件，注意特殊符号<strong>@</strong></p>
 <p> <code>curl -F &quot;file=@localfile;filename=nameinpost&quot; url.com</code><br> 上传文件并制定filename</p>
+</li>
+<li><p>静默<br><code>curl -s -o tmp/file &quot;http://m.sm.cn&quot; (silent)</code><br>Silent mode. Don’t show progress meter or error messages.  Makes Curl mute.</p>
 </li>
 </ol>
 <p>ok，以上是curl的几个主要用法。主要参考以下两篇博客：<br><a href="http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="external">阮一峰的blog</a><br><a href="http://www.xuebuyuan.com/799185.html" target="_blank" rel="external">学步园教程</a></p>
@@ -652,7 +828,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

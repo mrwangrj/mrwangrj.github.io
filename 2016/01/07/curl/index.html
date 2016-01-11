@@ -52,18 +52,18 @@
 
 
 <meta name="description" content="curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：
-curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G  &amp;quot;http://dict.youdao.com/search&amp;quot;  | grep -A 5 &amp;#39;class=&amp;q">
+curl -s -d &amp;quot;q=cheer&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G &amp;quot;http://dict.youdao.com/search&amp;quot; | grep -A 5 &amp;#39;class=&amp;q">
 <meta property="og:type" content="article">
 <meta property="og:title" content="curl">
 <meta property="og:url" content="http://yoursite.com/2016/01/07/curl/index.html">
 <meta property="og:site_name" content="佳杰誓">
 <meta property="og:description" content="curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：
-curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G  &amp;quot;http://dict.youdao.com/search&amp;quot;  | grep -A 5 &amp;#39;class=&amp;q">
-<meta property="og:updated_time" content="2016-01-07T06:16:57.045Z">
+curl -s -d &amp;quot;q=cheer&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G &amp;quot;http://dict.youdao.com/search&amp;quot; | grep -A 5 &amp;#39;class=&amp;q">
+<meta property="og:updated_time" content="2016-01-08T03:03:51.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="curl">
 <meta name="twitter:description" content="curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：
-curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G  &amp;quot;http://dict.youdao.com/search&amp;quot;  | grep -A 5 &amp;#39;class=&amp;q">
+curl -s -d &amp;quot;q=cheer&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G &amp;quot;http://dict.youdao.com/search&amp;quot; | grep -A 5 &amp;#39;class=&amp;q">
 
 
 
@@ -236,7 +236,7 @@ curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G 
 
       
         <span itemprop="articleBody"><p>curl是一个常用的Linux工具，功能强大，python和php都有相关的库，却始终一知半解，今天来梳理一下经典用法。先上个例子：</p>
-<p><code>curl -s -d &quot;q=$KW&amp;le=eng&amp;keyfrom=dict.top&quot; -G  &quot;http://dict.youdao.com/search&quot;  | grep -A 5 &#39;class=&quot;trans-container&quot;&#39;   | grep &#39;&lt;li&gt;&#39; | sed -e &#39;s:[&lt;li&gt;&lt;/li&gt;]::g&#39;</code><br>通过-G -d 的形式提交一个get请求到有道字典，然后截取翻译信息。</p>
+<p><code>curl -s -d &quot;q=cheer&amp;le=eng&amp;keyfrom=dict.top&quot; -G &quot;http://dict.youdao.com/search&quot; | grep -A 5 &#39;class=&quot;trans-container&quot;&#39; | grep &#39;&lt;li&gt;&#39; | sed -e &#39;s/&lt;[^&gt;]*&gt;//g&#39;</code><br>通过-G -d 的形式提交一个get请求到有道字典，然后截取翻译信息。</p>
 <ol>
 <li><p>基本用法<br> <code>curl &quot;http://m.sm.cn&quot;</code><br> 加上引号是好习惯，避免当url中有<strong>&amp;</strong>或其他特殊字符。该命令会将页面显示在”标准输出”（stdout）中。</p>
 </li>
@@ -259,6 +259,8 @@ curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G 
 </li>
 <li><p>上传文件<br> <code>curl -F upload_file=@tmp/file.txt http://localhost/learing-curl/upload.php</code><br> 上传文件，注意特殊符号<strong>@</strong></p>
 <p> <code>curl -F &quot;file=@localfile;filename=nameinpost&quot; url.com</code><br> 上传文件并制定filename</p>
+</li>
+<li><p>静默<br><code>curl -s -o tmp/file &quot;http://m.sm.cn&quot; (silent)</code><br>Silent mode. Don’t show progress meter or error messages.  Makes Curl mute.</p>
 </li>
 </ol>
 <p>ok，以上是curl的几个主要用法。主要参考以下两篇博客：<br><a href="http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="external">阮一峰的blog</a><br><a href="http://www.xuebuyuan.com/799185.html" target="_blank" rel="external">学步园教程</a></p>
@@ -288,6 +290,10 @@ curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G 
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/08/sed/" rel="prev" title="sed">
+                sed <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -359,7 +365,7 @@ curl -s -d &amp;quot;q=$KW&amp;amp;le=eng&amp;amp;keyfrom=dict.top&amp;quot; -G 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
