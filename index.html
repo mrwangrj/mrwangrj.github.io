@@ -177,6 +177,15 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
 
     
       
@@ -265,13 +274,13 @@ s replace 替换，通常可以搭配正规表示法（正则还是要加强啊�
 &lt;li&gt;n. 欢呼；愉快；心情；令人愉快的事&lt;/li&gt;
 &lt;li&gt;vi. 欢呼；感到高兴&lt;/li&gt;
 </code></pre><p>最后一步的sed命令负责将标签去掉（替换成空）。<br><code>sed -e &#39;s/&lt;[^&gt;]*&gt;//g</code></p>
-<h3 id="u5220_u9664"><a href="#u5220_u9664" class="headerlink" title="删除"></a>删除</h3><pre><code>sed &apos;1d&apos; file              #删除第1行 
-sed &apos;$d&apos; file              #删除最后1行
-sed &apos;1,2d&apos; file           #删除第1行到第2行
-sed &apos;2,$d&apos; file           #删除第2行到最后1行
+<h3 id="u5220_u9664"><a href="#u5220_u9664" class="headerlink" title="删除"></a>删除</h3><pre><code>sed &apos;1d&apos; file     #删除第1行 
+sed &apos;$d&apos; file     #删除最后1行
+sed &apos;1,2d&apos; file  #删除第1行到第2行
+sed &apos;2,$d&apos; file  #删除第2行到最后1行
 
 sed &apos;/keyword/d&apos; file      #删除含有keyword的行（模式匹配）
-sed &apos;/keyword/!d&apos; file      #删除不含有keyword的行（模式匹配）
+sed &apos;/keyword/!d&apos; file     #删除不含有keyword的行（模式匹配）
 sed &apos;2,/keyword/d&apos; file    #删除从第2行，到含有keyword那行 （两部分组成）
 sed &apos;/keyword/d,10&apos; file   #删除从含有keyword那行，到第10行 （两部分组成）
 
@@ -283,43 +292,43 @@ sed -n &apos;2,$p&apos; file        #打印第2行到最后1行
 
 sed -n &apos;/keyword/p&apos; file  #打印keyword所在行（模式匹配）
 sed -n &apos;/keyword/!p&apos; file  #打印不含有keyword所在行（模式匹配）
-</code></pre><h3 id="u884C_u66FF_u6362"><a href="#u884C_u66FF_u6362" class="headerlink" title="行替换"></a>行替换</h3><pre><code>sed &apos;1c hello sed&apos; file                        #将第1行进行替换
-sed &apos;1,3c hello sed&apos; file                     #将第1,2,3行进行替换，注意是替换成为一行&quot;hello sed&quot;，而不是三行
-sed &quot;/keyword/c hello sed&quot; file          #替换含有keyword的行的内容为“hello sed”
-</code></pre><h3 id="u63D2_u5165_26amp_3B_u8FFD_u52A0"><a href="#u63D2_u5165_26amp_3B_u8FFD_u52A0" class="headerlink" title="插入&amp;追加"></a>插入&amp;追加</h3><pre><code>sed &apos;$i hello sed&apos; file      #在最后1行前面插入1行文本
-sed &apos;1i hello sed&apos; file      #在第1行前面插入1行文本
-sed &apos;1,3i hello sed&apos; file   #在1,2,3行每行前面插入1行文本
+</code></pre><h3 id="u884C_u66FF_u6362"><a href="#u884C_u66FF_u6362" class="headerlink" title="行替换"></a>行替换</h3><pre><code>sed &apos;1c hello sed&apos; file   #将第1行进行替换
+sed &apos;1,3c hello sed&apos; file  #将第1,2,3行进行替换，注意是替换成为一行&quot;hello sed&quot;，而不是三行
+sed &quot;/keyword/c hello sed&quot; file  #替换含有keyword的行的内容为“hello sed”
+</code></pre><h3 id="u63D2_u5165_26amp_3B_u8FFD_u52A0"><a href="#u63D2_u5165_26amp_3B_u8FFD_u52A0" class="headerlink" title="插入&amp;追加"></a>插入&amp;追加</h3><pre><code>sed &apos;$i hello sed&apos; file  #在最后1行前面插入1行文本
+sed &apos;1i hello sed&apos; file  #在第1行前面插入1行文本
+sed &apos;1,3i hello sed&apos; file  #在1,2,3行每行前面插入1行文本
 
-sed &apos;$a hello sed&apos; file      #在最后1行后面追加1行文本
-sed &apos;1a hello sed&apos; file      #在第1行后面追加1行文本
-sed &apos;1,3a hello sed&apos; file   #在1,2,3行每行后面追加1行文本
+sed &apos;$a hello sed&apos; file  #在最后1行后面追加1行文本
+sed &apos;1a hello sed&apos; file  #在第1行后面追加1行文本
+sed &apos;1,3a hello sed&apos; file  #在1,2,3行每行后面追加1行文本
 </code></pre><h3 id="u5B57_u7B26_u66FF_u6362"><a href="#u5B57_u7B26_u66FF_u6362" class="headerlink" title="字符替换"></a>字符替换</h3><pre><code>- 全局替换
-    sed &apos;s/keyword/new/g&apos; file            #替换
-    sed &apos;s/keyword//g file                  #替换成空，相当于删除掉了
-    sed &apos;s/^/#/g file                           #在每行开始增加内容（#）
-    sed &apos;s/$/!/g file                           #在每行末尾增加内容（!）
-    sed &apos;s/\&lt;/-/g file                          #在每行末尾增加内容（-）
-    sed &apos;s/\&gt;/~/g file                         #在每行末尾增加内容（~）
+    sed &apos;s/keyword/new/g&apos; file  #替换
+    sed &apos;s/keyword//g file  #替换成空，相当于删除掉了
+    sed &apos;s/^/#/g file  #在每行开始增加内容（#）
+    sed &apos;s/$/!/g file  #在每行末尾增加内容（!）
+    sed &apos;s/\&lt;/-/g file  #在每行末尾增加内容（-）
+    sed &apos;s/\&gt;/~/g file  #在每行末尾增加内容（~）
 - 指定行替换
-    sed &apos;3s/keyword/new/g&apos; file        #仅在第3行进行替换
-    sed &apos;3,5s/keyword/new/g&apos; file     #在第3-6行进行替换
+    sed &apos;3s/keyword/new/g&apos; file  #仅在第3行进行替换
+    sed &apos;3,5s/keyword/new/g&apos; file  #在第3-6行进行替换
 - 指定列替换
-    sed &apos;s/keyword/new/1&apos; file           #替换每行第1个keyword
+    sed &apos;s/keyword/new/1&apos; file  #替换每行第1个keyword
     或 sed &apos;s/keyword/new/&apos; file
-    sed &apos;s/keyword/new/2&apos; file          #替换每行第2个keyword
-    sed &apos;s/keyword/new/2g&apos; file        #替换每行第2个以后的keyword
+    sed &apos;s/keyword/new/2&apos; file  #替换每行第2个keyword
+    sed &apos;s/keyword/new/2g&apos; file  #替换每行第2个以后的keyword
 
-    sed &apos;s/^.//1&apos; file                         #删掉每行的第1个字符
-    sed &apos;s/.//2&apos; file                           #删掉每行的第2个字符
+    sed &apos;s/^.//1&apos; file  #删掉每行的第1个字符
+    sed &apos;s/.//2&apos; file  #删掉每行的第2个字符
 
 - 以上两种情况混用
-    sed &apos;3s/keyword/new/2&apos; file         #替换第3行第2个keyword
+    sed &apos;3s/keyword/new/2&apos; file  #替换第3行第2个keyword
 </code></pre><h3 id="u591A_u4E2A_u5339_u914D"><a href="#u591A_u4E2A_u5339_u914D" class="headerlink" title="多个匹配"></a>多个匹配</h3><pre><code>sed &apos;1,3s/my/your/g; 3,$s/This/That/g&apos; file
 或者可以这样
 sed -e &apos;1,3s/my/your/g&apos; -e &apos;3,$s/This/That/g&apos; file
 </code></pre><h3 id="u5339_u914D_u5F15_u7528_u7B26_26amp_3B"><a href="#u5339_u914D_u5F15_u7528_u7B26_26amp_3B" class="headerlink" title="匹配引用符&amp;"></a>匹配引用符&amp;</h3><pre><code>sed &apos;s/keyword/[&amp;]/g&apos; file #在keyword两边加上[]
 </code></pre><h3 id="u547D_u4EE4N"><a href="#u547D_u4EE4N" class="headerlink" title="命令N"></a>命令N</h3><pre><code>Read/append the next line of input into the pattern space.
-sed &apos;N;s/\n/,/g&apos; file             #将相邻两行进行合并后，再进行替换（把换行符替换成了,）
+sed &apos;N;s/\n/,/g&apos; file  #将相邻两行进行合并后，再进行替换（把换行符替换成了,）
 
 1 keyword a
 2 keyword b
