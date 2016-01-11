@@ -247,7 +247,8 @@
             
               <p>sed - stream editor for filtering and transforming text </p>
 <p><code>sed [选项]  [定址commands] [inputfile]</code></p>
-<h3 id="u9009_u9879_3A"><a href="#u9009_u9879_3A" class="headerlink" title="选项:"></a>选项:</h3><pre><code>-n: 使用安静(silent)模式。在1般 sed 的用法中，所有来自 STDIN的资料1般都会被列出到STDOUT上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那1行(或者动作)才会被列出来。
+<h3 id="u9009_u9879_3A"><a href="#u9009_u9879_3A" class="headerlink" title="选项:"></a>选项:</h3><pre><code>-n: 使用安静(silent)模式。在1般 sed 的用法中，所有来自 STDIN的资料1般都会被列出到STDOUT上。
+但如果加上 -n 参数后，则只有经过sed 特殊处理的那1行(或者动作)才会被列出来。
 -e: 直接在指令列模式上进行 sed 的动作编辑；
 -f: 直接将 sed 的动作写在1个档案内， -f filename 则可以执行 filename 内的sed 动作；
 -r: sed 的动作支援的是扩展型正规表示法的语法。(预设是基础正规表示法语法)
@@ -269,12 +270,12 @@ sed &apos;$d&apos; file              #删除最后1行
 sed &apos;1,2d&apos; file           #删除第1行到第2行
 sed &apos;2,$d&apos; file           #删除第2行到最后1行
 
-sed &apos;/keyword/d&apos; file              #删除含有keyword的行（模式匹配）
-sed &apos;/keyword/!d&apos; file              #删除不含有keyword的行（模式匹配）
-sed &apos;2,/keyword/d&apos; file            #删除从第2行，到含有keyword那行 （两部分组成）
-sed &apos;/keyword/d,10&apos; file           #删除从含有keyword那行，到第10行 （两部分组成）
+sed &apos;/keyword/d&apos; file      #删除含有keyword的行（模式匹配）
+sed &apos;/keyword/!d&apos; file      #删除不含有keyword的行（模式匹配）
+sed &apos;2,/keyword/d&apos; file    #删除从第2行，到含有keyword那行 （两部分组成）
+sed &apos;/keyword/d,10&apos; file   #删除从含有keyword那行，到第10行 （两部分组成）
 
-sed &apos;/t.*t/d&apos; file                       #删除包含2个t的行（正则匹配）
+sed &apos;/t.*t/d&apos; file            #删除包含2个t的行（正则匹配）
 </code></pre><h3 id="u6253_u5370"><a href="#u6253_u5370" class="headerlink" title="打印"></a>打印</h3><pre><code>sed -n &apos;1p&apos; file           #打印第1行 
 sed -n &apos;$p&apos; file           #打印最后1行
 sed -n &apos;1,2p&apos; file        #打印第1行到第2行
@@ -294,19 +295,19 @@ sed &apos;1a hello sed&apos; file      #在第1行后面追加1行文本
 sed &apos;1,3a hello sed&apos; file   #在1,2,3行每行后面追加1行文本
 </code></pre><h3 id="u5B57_u7B26_u66FF_u6362"><a href="#u5B57_u7B26_u66FF_u6362" class="headerlink" title="字符替换"></a>字符替换</h3><pre><code>- 全局替换
     sed &apos;s/keyword/new/g&apos; file            #替换
-    sed &apos;s/keyword//g file                         #替换成空，相当于删除掉了
-    sed &apos;s/^/#/g file                                  #在每行开始增加内容（#）
-    sed &apos;s/$/!/g file                                  #在每行末尾增加内容（!）
-    sed &apos;s/\&lt;/-/g file                                 #在每行末尾增加内容（-）
-    sed &apos;s/\&gt;/~/g file                                #在每行末尾增加内容（~）
+    sed &apos;s/keyword//g file                  #替换成空，相当于删除掉了
+    sed &apos;s/^/#/g file                           #在每行开始增加内容（#）
+    sed &apos;s/$/!/g file                           #在每行末尾增加内容（!）
+    sed &apos;s/\&lt;/-/g file                          #在每行末尾增加内容（-）
+    sed &apos;s/\&gt;/~/g file                         #在每行末尾增加内容（~）
 - 指定行替换
     sed &apos;3s/keyword/new/g&apos; file        #仅在第3行进行替换
     sed &apos;3,5s/keyword/new/g&apos; file     #在第3-6行进行替换
 - 指定列替换
     sed &apos;s/keyword/new/1&apos; file           #替换每行第1个keyword
     或 sed &apos;s/keyword/new/&apos; file
-    sed &apos;s/keyword/new/2&apos; file         #替换每行第2个keyword
-    sed &apos;s/keyword/new/2g&apos; file       #替换每行第2个以后的keyword
+    sed &apos;s/keyword/new/2&apos; file          #替换每行第2个keyword
+    sed &apos;s/keyword/new/2g&apos; file        #替换每行第2个以后的keyword
 
     sed &apos;s/^.//1&apos; file                         #删掉每行的第1个字符
     sed &apos;s/.//2&apos; file                           #删掉每行的第2个字符
@@ -318,7 +319,7 @@ sed &apos;1,3a hello sed&apos; file   #在1,2,3行每行后面追加1行文本
 sed -e &apos;1,3s/my/your/g&apos; -e &apos;3,$s/This/That/g&apos; file
 </code></pre><h3 id="u5339_u914D_u5F15_u7528_u7B26_26amp_3B"><a href="#u5339_u914D_u5F15_u7528_u7B26_26amp_3B" class="headerlink" title="匹配引用符&amp;"></a>匹配引用符&amp;</h3><pre><code>sed &apos;s/keyword/[&amp;]/g&apos; file #在keyword两边加上[]
 </code></pre><h3 id="u547D_u4EE4N"><a href="#u547D_u4EE4N" class="headerlink" title="命令N"></a>命令N</h3><pre><code>Read/append the next line of input into the pattern space.
-sed &apos;N;s/\n/,/g&apos; file                                       #将相邻两行进行合并后，再进行替换（把换行符替换成了,）
+sed &apos;N;s/\n/,/g&apos; file             #将相邻两行进行合并后，再进行替换（把换行符替换成了,）
 
 1 keyword a
 2 keyword b
@@ -329,7 +330,7 @@ sed &apos;N;s/\n/,/g&apos; file                                       #将相邻
 1 keyword a,2 keyword b 
 3 keyword c,4 keyword d
 
-sed &apos;2N;s/keyword/new/&apos; file                         #将第2行与相邻行进行合并后，再进行替换，仅替换合并后每行的第一个，替换后，再把合并的行拆开
+sed &apos;2N;s/keyword/new/&apos; file  #将第2行与相邻行进行合并后，再进行替换，仅替换合并后每行的第一个，替换后，再把合并的行拆开
 
 1 keyword a
 2 keyword b
